@@ -35,7 +35,6 @@ namespace Electron_StockScreener.Controllers
         }
 
 
-
         public IActionResult UserDashBoard()
         {
             return View();

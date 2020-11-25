@@ -6,6 +6,7 @@ using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -52,6 +53,14 @@ namespace Electron_StockScreener
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Login}/{id?}");
+            });
+
+            //²K¥[mimeType
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".vue"] = "application/javascript";
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ContentTypeProvider = provider
             });
 
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
