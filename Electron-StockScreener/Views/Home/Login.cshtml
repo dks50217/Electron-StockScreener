@@ -1,0 +1,23 @@
+﻿@model Electron_StockScreener.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div id="login">
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div>Stock<span>Screener</span></div>
+    </div>
+    <br>
+    <form action="#" method="post">
+        @Html.AntiForgeryToken()
+        <div class="login">
+            <input type="text" placeholder="username" name="UserID" autocomplete="off"><br>
+            <input type="password" placeholder="password" name="Password" autocomplete="off"><br>
+            @Html.EditorFor(x => x.IsRemember) <label for="rememberMe">Remember me</label>
+            <input type="submit" value="Login" />
+        </div>
+    </form>
+</div>
