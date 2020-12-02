@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Electron_StockScreener.Models;
+using Electron_StockScreener.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace Electron_StockScreener.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger,IConfiguration config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public IActionResult Login()

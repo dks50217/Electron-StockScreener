@@ -25,7 +25,12 @@ namespace Electron_StockScreener
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            int IdleTimeout = Configuration.GetValue<int>("Session:IdleTimeout");
+            
             services.AddControllersWithViews();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(IdleTimeout);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

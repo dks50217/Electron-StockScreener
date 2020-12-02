@@ -7,9 +7,9 @@ namespace Electron_StockScreener.Models
 {
     public class LoginModel
     {
-        public string UserID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public bool IsRemember { get; set; }
+        public string UserID { get;}
+        public string UserName { get;}
+        public string Password { get;}
+        public bool IsRemember { get;}
     }
 }

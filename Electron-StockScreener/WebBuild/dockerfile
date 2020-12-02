@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8
+
+WORKDIR C:/Inetpub/wwwroot
+
+COPY . .
+
+RUN del dockerfile
+
+RUN powershell.exe -Command " \
+    Import-Module IISAdministration; \
+    $cert = New-SelfSignedCertificate -DnsName stock.screener.com -CertStoreLocation cert:\LocalMachine\My; \
+    $certHash = $cert.GetCertHash(); \
+    $sm = Get-IISServerManager; \
+    $sm.Sites[\"Default Web Site\"].Bindings.Add(\"*:443:\", $certHash, \"My\", \"0\"); \
+    $sm.CommitChanges();"
